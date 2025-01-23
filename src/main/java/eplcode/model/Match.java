@@ -1,7 +1,8 @@
 package eplcode.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -10,7 +11,9 @@ import java.time.LocalTime;
 public class Match {
 
     @Id
+    @Column(name = "match_ID")
     private String matchID;
+
     private String season;
     private int matchWeek;
     private LocalDate date;
@@ -38,6 +41,14 @@ public class Match {
     private int awayTeamRedCards;
     private int homeTeamPoints;
     private int awayTeamPoints;
+
+    public Match() {
+    }
+
+    public Match(String homeTeam, String awayTeam) {
+        this.homeTeam = homeTeam;
+        this.awayTeam = awayTeam;
+    }
 
 
     public String getMatchID() {
