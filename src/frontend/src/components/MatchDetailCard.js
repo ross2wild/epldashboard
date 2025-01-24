@@ -10,7 +10,6 @@ export const MatchDetailCard = ({teamName, match}) => {
 
     return (
         <div className="MatchDetailCard">
-            <h3>Previous Matches</h3>
             <h4>{match.date}</h4>
             <h1>
                 {/* if home team is not the main team, make it a link*/}

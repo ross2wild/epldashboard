@@ -28,6 +28,7 @@ export const TeamPage = () => {
     return (
         <div className="TeamPage">
             <h1>{team.teamName}</h1>
+            <h3>Last five Premier League Matches</h3>
             <MatchDetailCard teamName = {team.teamName} match = {team.matches[0]}/>
             {team.matches.slice(1).map(match => <MatchSmallCard teamName = {team.teamName} match={match}/>)}
         </div>
