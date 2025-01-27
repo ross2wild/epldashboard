@@ -1,0 +1,25 @@
+.MatchSmallCard{
+  padding: .8rem;
+  border-radius: 4px;
+  text-align: left;
+
+  .match-date{
+    margin-top: 10px;
+    font-style: italic;
+    font-size: small;
+  }
+
+  .team-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .5rem;
+    font-size: 130%;
+
+  }
+  .team-name {
+    font-weight: bold;
+  }
+
+
+
+}
