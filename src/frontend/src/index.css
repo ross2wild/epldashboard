@@ -15,15 +15,12 @@ body {
   font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(240, 241, 241, 0.5);
   max-width: 1000px;
   margin: 0 auto;
 }
 
-a {
-  color: #ffffff;
-  font-family: 'Lato Bold 900', sans-serif;
-}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

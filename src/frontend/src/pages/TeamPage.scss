@@ -1,31 +1,50 @@
 .TeamPage {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  grid-column-gap: 10px;
-  grid-row-gap: 5px;
+  grid-template-columns: 3fr 1fr;
 
-  .team-name-section {
-    grid-column: span 3;
-    justify-self: start;
-    align-self: end;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    .team-name {
-      font-size: 5rem;
+    .team-name-section {
+      width: 690px;
+      padding-left: 1rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      grid-column: span 1;
+      justify-self: start;
+      align-self: center;
+      background-color: white;
+      border: 1px solid #eaeaea;
+      border-radius: 10px;
+
+      .team-name {
+        font-size: 4rem;
+      }
     }
-  }
 
   .win-draw-loss-section {
     justify-self: center;
   }
 
-  .match-detail-section {
-    grid-column: span 4;
+  .match-section-container {
+    background-color: #ffffff; /* Light grey */
+    padding: 20px;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    grid-column: 1 / -1;
 
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; /* Keep the original structure */
+    grid-column-gap: 5px;
+    grid-row-gap: 10px;
+
+    .match-detail-section {
+      grid-column: span 4;
+
+      .recent-premier-matches {
+        font-size: 150%;
+        margin-top: 30px;
+      }
+    }
   }
 
-
-
 }
+
 

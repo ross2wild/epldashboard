@@ -1,0 +1,14 @@
+.DashPage{
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-column-gap: 10px;
+      grid-row-gap: 10px;
+    }
+    .app-name{
+      font-size: 4rem;
+      margin: 30px;
+      text-align: center;
+      font-family: 'Lato', sans-serif;
+    }
+}

@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from 'react';
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import {MatchDetailCard} from "../components/MatchDetailCard";
 import {MatchSmallCard} from "../components/MatchSmallCard";
 import './TeamPage.scss';
@@ -41,11 +41,11 @@ export const TeamPage = () => {
                                 { title: 1, value: team.totalDraws, label: 'Draws', color: '#AFAFAFFF' },
                                 { title: 2, value: team.totalLosses, label: 'Losses', color: '#DE2525E8'},
                             ],
-                            innerRadius:30,
+                            innerRadius:25,
                             outerRadius: 50,
-                            paddingAngle: 10,
-                            cornerRadius: 4,
-                            startAngle: -45,
+                            paddingAngle: 8,
+                            cornerRadius: 5,
+                            startAngle: 0,
                         },
                     ]}
                     width={230}
@@ -53,15 +53,17 @@ export const TeamPage = () => {
                 />
             </div>
 
+            <div className="match-section-container">
+                <div className="match-detail-section">
+                    <h3 className="recent-premier-matches">Most recent Premier League Matches</h3>
+                    <MatchDetailCard teamName = {team.teamName} match = {team.matches[0]}/>
+                </div>
+                {team.matches.slice(1).map(match => <MatchSmallCard teamName = {team.teamName} match={match}/>)}
+                <div className="more-link">
+                    <Link to={`/teams/${teamName}/matches/${process.env.REACT_APP_DATA_END_YEAR}`}>More</Link>
+                </div>
+            </div>
 
-            <div className="match-detail-section">
-                <h3>Most recent Premier League Matches</h3>
-                <MatchDetailCard teamName = {team.teamName} match = {team.matches[0]}/>
-            </div>
-            {team.matches.slice(1).map(match => <MatchSmallCard teamName = {team.teamName} match={match}/>)}
-            <div>
-                <a href="#">More</a>
-            </div>
         </div>
       );
     }
