@@ -9,7 +9,7 @@ export const DashPage = () => {
     useEffect(
         () => {
             const fetchAllTeams = async () => {
-                const response = await fetch(`http://localhost:8080/team/`)
+                const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/team/`)
                 const data = await response.json();
                 const sortedTeam = data.sort((a, b) => a.teamName.localeCompare(b.teamName));
 
@@ -26,7 +26,7 @@ export const DashPage = () => {
                 <h1 className="app-name">The Premier League Dashboard</h1>
             </div>
             <div className="team-grid">
-                { team.map(team => <TeamTile key={team.teamName} teamName={team.teamName} />)}
+                { team.map(team => <TeamTile key={team.id} teamName={team.teamName} />)}
             </div>
         </div>
     );

@@ -2,22 +2,22 @@
   display: grid;
   grid-template-columns: 3fr 1fr;
 
-    .team-name-section {
-      width: 690px;
-      padding-left: 1rem;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-      grid-column: span 1;
-      justify-self: start;
-      align-self: center;
-      background-color: white;
-      border: 1px solid #eaeaea;
-      border-radius: 10px;
+  .team-name-section {
+    width: 690px;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    grid-column: span 1;
+    justify-self: start;
+    align-self: center;
+    background-color: white;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
 
-      .team-name {
-        font-size: 4rem;
-      }
+    .team-name {
+      font-size: 4rem;
     }
+  }
 
   .win-draw-loss-section {
     justify-self: center;
