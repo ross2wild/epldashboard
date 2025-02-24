@@ -5,7 +5,7 @@ import "./Toolbar.scss";
 export const Toolbar = () => {
     return (
         <div className="Toolbar">
-            <div className="logo">EPL Dashboard</div>
+            <div className="logo"><Link to="/">EPL Dashboard</Link></div>
             <nav className="nav-links">
                 <Link to="/">Home</Link>
             </nav>

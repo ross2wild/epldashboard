@@ -34,12 +34,14 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
 
             Map<String, Team> teamData = new HashMap<>();
 
+            //aggregate total matches from home matches.
             em.createQuery("select m.homeTeam, count(*) from Match m group by m.homeTeam", Object[].class)
                     .getResultList()
                     .stream()
                     .map(e -> new Team((String) e[0], (long) e[1]))
                     .forEach(team -> teamData.put(team.getTeamName(), team));
 
+            //add away matches to total matches
             em.createQuery("select m.awayTeam, count(*) from Match m group by m.awayTeam", Object[].class)
                     .getResultList()
                     .stream()
@@ -48,6 +50,7 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
                         team.setTotalMatches(team.getTotalMatches() + (long) e[1]);
                     });
 
+            //process wins, draws and losses
             em.createQuery("select m.homeTeam, m.awayTeam, m.fullTimeHomeTeamGoals, m.fullTimeAwayTeamGoals from Match m", Object[].class)
                     .getResultList()
                     .forEach(e -> {
@@ -56,6 +59,7 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
                         int homeTeamGoals = (int) e[2];
                         int awayTeamGoals = (int) e[3];
 
+                        //get or create team entities
                         Team home = teamData.getOrDefault(homeTeam, new Team(homeTeam));
                         Team away = teamData.getOrDefault(awayTeam, new Team(awayTeam));
 
@@ -74,8 +78,22 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
 
                     });
 
-            teamData.values().forEach(team -> em.persist(team));
-            teamData.values().forEach(team -> System.out.println(team));
+            //calculate total points for each team
+            teamData.values().forEach(team -> {
+                long points = (team.getTotalWins() * 3) + (team.getTotalDraws());
+                team.setTotalPoints(points);
+            });
+
+            teamData.values().forEach(team -> {
+                em.persist(team);  // or em.persist(team) if these are new entries
+                log.info("Team: {} - Matches: {}, Wins: {}, Draws: {}, Losses: {}, Points: {}",
+                        team.getTeamName(),
+                        team.getTotalMatches(),
+                        team.getTotalWins(),
+                        team.getTotalDraws(),
+                        team.getTotalLosses(),
+                        team.getTotalPoints());
+            });
         }
 
     }
